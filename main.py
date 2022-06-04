@@ -34,6 +34,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 num_workers=4
+data_dir = './data'
 if args.dataset == 'CIFAR10':
     num_classes = 10
     transform_train = transforms.Compose([
@@ -49,12 +50,12 @@ if args.dataset == 'CIFAR10':
     ])
 
     trainset = torchvision.datasets.CIFAR10(
-        root='~/data', train=True, download=True, transform=transform_train)
+        root=data_dir, train=True, download=True, transform=transform_train)
     trainloader = torch.utils.data.DataLoader(
         trainset, batch_size=64, shuffle=True, num_workers=num_workers)
 
     testset = torchvision.datasets.CIFAR10(
-        root='~/data', train=False, download=True, transform=transform_test)
+        root=data_dir, train=False, download=True, transform=transform_test)
     testloader = torch.utils.data.DataLoader(
         testset, batch_size=64, shuffle=False, num_workers=num_workers)
 
@@ -76,12 +77,12 @@ elif args.dataset == 'CIFAR100':
     ])
 
     trainset = torchvision.datasets.CIFAR100(
-        root='~/data', train=True, download=True, transform=transform_train)
+        root=data_dir, train=True, download=True, transform=transform_train)
     trainloader = torch.utils.data.DataLoader(
         trainset, batch_size=64, shuffle=True, num_workers=num_workers)
 
     testset = torchvision.datasets.CIFAR100(
-        root='~/data', train=False, download=True, transform=transform_test)
+        root=data_dir, train=False, download=True, transform=transform_test)
     testloader = torch.utils.data.DataLoader(
         testset, batch_size=64, shuffle=False, num_workers=num_workers)
 
